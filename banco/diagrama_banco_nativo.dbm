@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2-beta2" last-position="0,541" last-zoom="0.95" max-obj-count="16"
+	 default-schema="public" default-owner="postgres">
+<database name="REALIZA" connlimit="1" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="RESTAURANTE" layer="0" collapse-mode="2" max-obj-count="10">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="20"/>
+	<column name="NOME_FANTASIA" not-null="true">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="RAZAO_SOCIAL" not-null="true">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="TELEFONE" not-null="true">
+		<type name="varchar" length="9"/>
+	</column>
+	<column name="ID_RESTAURANTE" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ID_ENDERECO" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="REGIAO_DE_ENTREGA" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="RESTAURANTE_pk" type="pk-constr" table="public.&quot;RESTAURANTE&quot;">
+		<columns names="ID_RESTAURANTE" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="ID_ENDERECO_UNIQUE" type="uq-constr" table="public.&quot;RESTAURANTE&quot;">
+		<columns names="ID_ENDERECO" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="CNPJ_CREDENCIAL_RESTAURANTE" index="8"/>
+		<object name="ID_ENDERECO_ENDERECO" index="7"/>
+		<object name="ID_TIPOS_DE_COMIDA_TIPOS_DE_COMIDA" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="CREDENCIAL_RESTAURANTE_fk" index="7"/>
+		<object name="ENDERECO_fk" index="5"/>
+		<object name="RESTAURANTE_uq" index="4"/>
+		<object name="RESTAURANTE_uq1" index="6"/>
+		<object name="RESTAURANTE_uq2" index="8"/>
+		<object name="TIPOS_DE_COMIDA_fk" index="3"/>
+	</customidxs>
+</table>
+
+<table name="CLIENTE" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="780"/>
+	<column name="ID_CLIENTE" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="NOME" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="CPF">
+		<type name="varchar" length="11"/>
+	</column>
+	<column name="RG" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="TELEFONE">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="CLIENTE_pk" type="pk-constr" table="public.&quot;CLIENTE&quot;">
+		<columns names="ID_CLIENTE" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="ID_ENDERECO_ENDERECO" index="5"/>
+		<object name="email_CREDENCIAL_CLIENTE" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="CLIENTE_uq" index="2"/>
+		<object name="CLIENTE_uq1" index="4"/>
+		<object name="CREDENCIAL_CLIENTE_fk" index="3"/>
+		<object name="ENDERECO_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="PRATOS" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="600" y="0"/>
+	<column name="ID_PRATO" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="NOME">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="PRECO" not-null="true"
+	 identity-type="ALWAYS">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="DESCRICAO" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="DISPONIBILIDADE" not-null="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="TEMPO_PREPARO">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="PRATOS_pk" type="pk-constr" table="public.&quot;PRATOS&quot;">
+		<columns names="ID_PRATO" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="PEDIDO" layer="0" collapse-mode="2" max-obj-count="12">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="960" y="320"/>
+	<column name="ID_PEDIDO" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="VALOR_ENTREGA">
+		<type name="money" length="0"/>
+	</column>
+	<column name="TEMPO_ENTREGA">
+		<type name="time" length="0"/>
+	</column>
+	<column name="VALOR" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="HORA" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="DATA" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="PRATOS_ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="PEDIDO_pk" type="pk-constr" table="public.&quot;PEDIDO&quot;">
+		<columns names="ID_PEDIDO" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="ID_CLIENTE_CLIENTE" index="8"/>
+		<object name="ID_ENTREGADOR_ENTREGADOR" index="9"/>
+		<object name="ID_PAGAMENTO_PAGAMENTO" index="7"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="CLIENTE_fk" index="3"/>
+		<object name="ENTREGADOR_fk" index="5"/>
+		<object name="PAGAMENTO_fk" index="1"/>
+		<object name="PEDIDO_uq" index="2"/>
+		<object name="PEDIDO_uq1" index="4"/>
+		<object name="PEDIDO_uq2" index="6"/>
+	</customidxs>
+</table>
+
+<table name="ENTREGADOR" layer="0" collapse-mode="2" max-obj-count="9">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="920" y="780"/>
+	<column name="ID_ENTREGADOR" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="NOME" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="VEICULO" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="PLACA" not-null="true">
+		<type name="char" length="7"/>
+	</column>
+	<column name="TELEFONE" not-null="true">
+		<type name="varchar" length="9"/>
+	</column>
+	<column name="ENTREGA">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="ENTREGADOR_pk" type="pk-constr" table="public.&quot;ENTREGADOR&quot;">
+		<columns names="ID_ENTREGADOR" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="CPF_CREDENCIAL_ENTREGADOR" index="7"/>
+		<object name="ID_ENDERECO_ENDERECO" index="5"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="CREDENCIAL_ENTREGADOR_fk" index="3"/>
+		<object name="ENDERECO_fk" index="1"/>
+		<object name="ENTREGADOR_uq" index="2"/>
+		<object name="ENTREGADOR_uq1" index="4"/>
+	</customidxs>
+</table>
+
+<table name="PAGAMENTO" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="20"/>
+	<column name="ID_PAGAMENTO" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="TIPO">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="VALOR_PAGO">
+		<type name="money" length="0"/>
+	</column>
+	<column name="TROCO">
+		<type name="money" length="0"/>
+	</column>
+	<constraint name="PAGAMENTO_pk" type="pk-constr" table="public.&quot;PAGAMENTO&quot;">
+		<columns names="ID_PAGAMENTO" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="TIPOS_DE_COMIDA" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="440"/>
+	<column name="ID_TIPOS_DE_COMIDA" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="DESCRICAO">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="ID_TIPOS_DE_COMIDA_UNIQUE" type="uq-constr" table="public.&quot;TIPOS_DE_COMIDA&quot;">
+		<columns names="ID_TIPOS_DE_COMIDA" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="TIPOS_DE_COMIDA_pk" type="pk-constr" table="public.&quot;TIPOS_DE_COMIDA&quot;">
+		<columns names="ID_TIPOS_DE_COMIDA" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ENDERECO" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="440"/>
+	<column name="ID_ENDERECO" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ENDERECO" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="CIDADE_ID" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="CEP" not-null="true">
+		<type name="varchar" length="8"/>
+	</column>
+	<column name="REGIAO" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<constraint name="ENDERECO_pk" type="pk-constr" table="public.&quot;ENDERECO&quot;">
+		<columns names="ID_ENDERECO" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="ID_ENDERECO" type="uq-constr" table="public.&quot;ENDERECO&quot;">
+		<columns names="ID_ENDERECO" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="CIDADE" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="680"/>
+	<column name="ID_CIDADE" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="CIDADE">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="UF_ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="CIDADE_pk" type="pk-constr" table="public.&quot;CIDADE&quot;">
+		<columns names="ID_CIDADE" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="UF" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="900"/>
+	<column name="UF">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="ID_UF" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="UF_pk" type="pk-constr" table="public.&quot;UF&quot;">
+		<columns names="ID_UF" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="many_CIDADE_has_many_UF" type="relnn" layer="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#0e34c5"
+	 src-table="public.&quot;CIDADE&quot;"
+	 dst-table="public.&quot;UF&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_CIDADE_has_many_UF">
+	<label ref-type="name-label">
+		<position x="115.643" y="-16.2357"/>
+	</label>
+</relationship>
+
+<relationship name="many_ENDERECO_has_many_CIDADE" type="relnn" layer="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#48b5a7"
+	 src-table="public.&quot;ENDERECO&quot;"
+	 dst-table="public.&quot;CIDADE&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_ENDERECO_has_many_CIDADE">
+	<label ref-type="name-label">
+		<position x="133.164" y="-2.83566"/>
+	</label>
+</relationship>
+
+<relationship name="CLIENTE_has_one_ENDERECO" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#39ffa0"
+	 src-table="public.&quot;ENDERECO&quot;"
+	 dst-table="public.&quot;CLIENTE&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="95.2321" y="-31.8857"/>
+	</label>
+</relationship>
+
+<relationship name="many_PEDIDO_has_many_PRATOS" type="relnn" layer="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#2b968c"
+	 src-table="public.&quot;PEDIDO&quot;"
+	 dst-table="public.&quot;PRATOS&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_PEDIDO_has_many_PRATOS">
+	<label ref-type="name-label">
+		<position x="93.0493" y="-76.7857"/>
+	</label>
+</relationship>
+
+<relationship name="ENTREGADOR_has_one_ENDERECO" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#cdd474"
+	 src-table="public.&quot;ENDERECO&quot;"
+	 dst-table="public.&quot;ENTREGADOR&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="RESTAURANTE_has_one_TIPOS_DE_COMIDA" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#65f096"
+	 src-table="public.&quot;TIPOS_DE_COMIDA&quot;"
+	 dst-table="public.&quot;RESTAURANTE&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="118.129" y="41.5143"/>
+	</label>
+</relationship>
+
+<relationship name="PEDIDO_has_one_PAGAMENTO" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#b18b77"
+	 src-table="public.&quot;PAGAMENTO&quot;"
+	 dst-table="public.&quot;PEDIDO&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="126.885" y="-70.1857"/>
+	</label>
+</relationship>
+
+<relationship name="many_RESTAURANTE_has_many_PRATOS" type="relnn" layer="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#3c8f0c"
+	 src-table="public.&quot;RESTAURANTE&quot;"
+	 dst-table="public.&quot;PRATOS&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_RESTAURANTE_has_many_PRATOS">
+	<label ref-type="name-label">
+		<position x="102.543" y="17.3643"/>
+	</label>
+</relationship>
+
+<relationship name="RESTAURANTE_has_one_ENDERECO" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#cfdeda"
+	 src-table="public.&quot;ENDERECO&quot;"
+	 dst-table="public.&quot;RESTAURANTE&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="PEDIDO_has_one_CLIENTE" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#a218c4"
+	 src-table="public.&quot;CLIENTE&quot;"
+	 dst-table="public.&quot;PEDIDO&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-62.804" y="-70.9357"/>
+	</label>
+</relationship>
+
+<relationship name="PEDIDO_has_one_ENTREGADOR" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#04f24e"
+	 src-table="public.&quot;ENTREGADOR&quot;"
+	 dst-table="public.&quot;PEDIDO&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="128.548" y="12.4643"/>
+	</label>
+</relationship>
+
+<table name="CREDENCIAL_CLIENTE" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="1140"/>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<constraint name="CREDENCIAIS_CLIENTE_pk" type="pk-constr" table="public.&quot;CREDENCIAL_CLIENTE&quot;">
+		<columns names="email" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="CLIENTE_has_one_CREDENCIAIS_CLIENTE" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#2e5134"
+	 src-table="public.&quot;CREDENCIAL_CLIENTE&quot;"
+	 dst-table="public.&quot;CLIENTE&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="100.103" y="46.4143"/>
+	</label>
+</relationship>
+
+<table name="CREDENCIAL_RESTAURANTE" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="280"/>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="CNPJ" not-null="true">
+		<type name="varchar" length="14"/>
+	</column>
+	<constraint name="CREDENCIAIS_CLIENTE_pk_cp" type="pk-constr" table="public.&quot;CREDENCIAL_RESTAURANTE&quot;">
+		<columns names="CNPJ" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="RESTAURANTE_has_one_CREDENCIAL_RESTAURANTE" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#44260b"
+	 src-table="public.&quot;CREDENCIAL_RESTAURANTE&quot;"
+	 dst-table="public.&quot;RESTAURANTE&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="216" y="-38.4857"/>
+	</label>
+</relationship>
+
+<table name="CREDENCIAL_ENTREGADOR" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="920" y="1160"/>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="CPF" not-null="true">
+		<type name="varchar" length="11"/>
+	</column>
+	<constraint name="CREDENCIAIS_CLIENTE_pk_cp_1" type="pk-constr" table="public.&quot;CREDENCIAL_ENTREGADOR&quot;">
+		<columns names="CPF" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="ENTREGADOR_has_one_CREDENCIAL_ENTREGADOR" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#c34605"
+	 src-table="public.&quot;CREDENCIAL_ENTREGADOR&quot;"
+	 dst-table="public.&quot;ENTREGADOR&quot;"
+	 src-required="false" dst-required="false"/>
+
+<constraint name="ID_ENDERECO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;ENDERECO&quot;" table="public.&quot;RESTAURANTE&quot;">
+	<columns names="ID_ENDERECO" ref-type="src-columns"/>
+	<columns names="ID_ENDERECO" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="&quot;rel_RESTAURANTE_ENDERECO&quot;" type="relfk" layer="0"
+	 src-table="public.&quot;RESTAURANTE&quot;"
+	 dst-table="public.&quot;ENDERECO&quot;" reference-fk="ID_ENDERECO"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
