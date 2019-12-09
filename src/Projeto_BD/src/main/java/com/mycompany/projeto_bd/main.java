@@ -1,4 +1,4 @@
-package trabalhoBD;
+package olympics;
 
 import java.util.Scanner;
 

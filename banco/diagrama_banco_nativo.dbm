@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2-beta2" last-position="0,541" last-zoom="0.95" max-obj-count="16"
+<dbmodel pgmodeler-ver="0.9.2-beta2" last-position="0,0" last-zoom="0.95" max-obj-count="16"
 	 default-schema="public" default-owner="postgres">
 <database name="REALIZA" connlimit="1" is-template="false" allow-conns="true">
 </database>
@@ -11,7 +11,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<table name="RESTAURANTE" layer="0" collapse-mode="2" max-obj-count="10">
+<table name="RESTAURANTE" layer="0" collapse-mode="2" max-obj-count="13">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="20" y="20"/>
@@ -31,6 +31,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="smallint" length="0"/>
 	</column>
 	<column name="REGIAO_DE_ENTREGA" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="HORARIO_ABRE" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="HORARIO_FECHA">
 		<type name="smallint" length="0"/>
 	</column>
 	<constraint name="RESTAURANTE_pk" type="pk-constr" table="public.&quot;RESTAURANTE&quot;">
