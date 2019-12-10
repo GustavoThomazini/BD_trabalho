@@ -18,6 +18,10 @@ public class Main {
                 String cepCliente = null;
                 String enderecoCliente = null;
                 String emailCliente = null;
+		String cadastro = null;
+		String email = null;
+		String senha = null;
+		
 
 		BancoDados bd = new BancoDados();
 		
@@ -26,8 +30,18 @@ public class Main {
 		System.out.print ("\nDigite a opcao desejada: ");
 		opcao = s.nextLine().trim();
 		
-		while (!opcao.equals("S")) {
+		while (!opcao.equals("s")) {
 			if (opcao.equals("1")) {
+				System.out.print("Já possuo cadastro de Cliente: S ou N");
+				cadastro = s.nextLine().trim();
+				if (opcao.equals("S")) {
+					System.out.print("Insira seu email");
+					login = s.nextLine().trim();
+					System.out.print("Insira sua senha");
+					senha = s.nextLine().trim();
+					bd.login(login,senha)
+				}
+			else{
                             System.out.print("Perfil de Acesso Cliente Selecionado ");
                             System.out.print("Digite seu nome completo:");
 			    nomeCliente = s.nextLine().trim();
@@ -49,9 +63,17 @@ public class Main {
 			    enderecoCliente = s.nextLine().trim();
                             System.out.print("Digite se email");
 			    emailCliente = s.nextLine().trim();
+			    bd.insereDadosCliente(nomeCliente,cpfCliente,rgCliente,telefoneCliente,ruaCliente,cidadeCliente,estadoCliente,cepCliente,enderecoCliente,emailCliente);
 			    
-			    bd.buscaMedalhas(nomeCliente,cpfCliente,rgCliente,telefoneCliente,ruaCliente,cidadeCliente,estadoCliente,cepCliente,enderecoCliente,emailCliente);
-			    
+			}
+			System.out.print("Fazer novo pedido: S ou N?");
+			pedido = s.nextLine().trim();
+			if (pedido.equals("S")) {
+				System.out.print("LISTA DE RESTAURANTES E ENDERECOS:");
+				
+				
+			}
+				
 			}
 			else if (opcao.equals("B")) {
 				System.out.print("Perfil de Acesso Cliente Selecionado ");
