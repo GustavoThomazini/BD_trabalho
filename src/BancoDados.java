@@ -1,4 +1,4 @@
-package Projeto_BD;
+package restaurante;
 import java.sql.*;
 import java.sql.Connection;
  
@@ -12,9 +12,9 @@ public BancoDados() throws SQLException {
 //Neste construtor, escreva o codigo necessário para
 // conexao com o banco de dados do PostgresSQL
 }
-public void buscaMedalhas (String atleta) throws SQLException {
+public void login (String email, String senha) throws SQLException {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM ATLETA");
+            ResultSet rs = st.executeQuery("SELECT * FROM 'CREDENCIAL_CLIENTE' WHERE email="email" = AND senha="senha"");
             String coluna1, coluna2, coluna3;
 while (rs.next()){
     coluna1 = rs.getString(1);
@@ -25,11 +25,6 @@ while (rs.next()){
     System.out.println(coluna3);
 }
 }
-	public void buscaJogos (String atleta) {
-		// Dado o nome do atleta, escreva o código que busca
-		//   e imprime as edicoes de jogos olimpicos disputados
-		//   por esse atleta.
-	}
 
 public void buscaRestaurantes (String CEP) throws SQLException {
             Statement st = con.createStatement();

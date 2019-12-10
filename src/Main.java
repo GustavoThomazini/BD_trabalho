@@ -1,4 +1,4 @@
-package trabalhoBD;
+package restaurante;
 
 import java.util.Scanner;
 
@@ -19,7 +19,6 @@ public class Main {
                 String enderecoCliente = null;
                 String emailCliente = null;
 		String cadastro = null;
-		String email = null;
 		String senha = null;
 		
 
@@ -36,7 +35,7 @@ public class Main {
 				cadastro = s.nextLine().trim();
 				if (opcao.equals("S")) {
 					System.out.print("Insira seu email");
-					login = s.nextLine().trim();
+					emailCliente = s.nextLine().trim();
 					System.out.print("Insira sua senha");
 					senha = s.nextLine().trim();
 					bd.login(login,senha)
@@ -80,22 +79,12 @@ public class Main {
 				System.out.print("Digite o prato que deseja inserir no pedido");
 				prato.add(s.nextLine());
 				System.out.print("Deseja inserir um novo prato?: S ou N");
-				}
-				
-				
-				bd.inserePedido(prato)
-
-
-
-
-
-
-				System.out.print("LISTA DE RESTAURANTES E ENDERECOS:");
-				System.out.print("LISTA DE RESTAURANTES E ENDERECOS:");
-				
-				
+				pedido = s.nextLine().trim();
+				}	
+				bd.inserePedido(prato)	
 			}
-				
+			}
+			/*	
 			}
 			else if (opcao.equals("B")) {
 				System.out.print("Perfil de Acesso Cliente Selecionado ");
@@ -119,12 +108,13 @@ public class Main {
 			System.out.println("\n--------------------\n");
 			mensagem();
 			opcao = s.nextLine().trim();
-		}
+		}*/
 		
+		}
 	}
 	
 	public static void mensagem() {
-                System.out.println("Olá, Seja bem vindo ao aplicativo");
+        System.out.println("Olá, Seja bem vindo ao aplicativo");
 		System.out.println("Escolha seu perfil de acesso da ferramenta ");	
 		System.out.println("Digite O número correspondente a opcao desejada: ");
 		System.out.println("1: Acesso de Cliente;");
