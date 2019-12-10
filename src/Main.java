@@ -69,6 +69,28 @@ public class Main {
 			System.out.print("Fazer novo pedido: S ou N?");
 			pedido = s.nextLine().trim();
 			if (pedido.equals("S")) {
+				System.out.print("Digite seu CEP");
+				cepCliente = s.nextLine().trim();
+				bd.buscaRestaurantes(cepCliente);
+				System.out.print("Digite o nome do restaurante");
+				String nomeRestaurante = s.nextLine().trim();
+				bd.buscaPratos(nomeRestaurante);
+				String[] prato;
+				while(pedido.equals("S")){
+				System.out.print("Digite o prato que deseja inserir no pedido");
+				prato.add(s.nextLine());
+				System.out.print("Deseja inserir um novo prato?: S ou N");
+				}
+				
+				
+				bd.inserePedido(prato)
+
+
+
+
+
+
+				System.out.print("LISTA DE RESTAURANTES E ENDERECOS:");
 				System.out.print("LISTA DE RESTAURANTES E ENDERECOS:");
 				
 				
