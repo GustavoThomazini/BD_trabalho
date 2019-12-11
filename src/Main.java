@@ -58,11 +58,13 @@ public class Main {
 			    estadoCliente = s.nextLine().trim();
                             System.out.print("CEP");
 			    cepCliente = s.nextLine().trim();
-                            System.out.print("Digite seu Endereco");
-			    enderecoCliente = s.nextLine().trim();
+                            System.out.print("Digite sua Regiao");
+			    regiaoCliente = s.nextLine().trim();
                             System.out.print("Digite se email");
 			    emailCliente = s.nextLine().trim();
-			    bd.insereDadosCliente(nomeCliente,cpfCliente,rgCliente,telefoneCliente,ruaCliente,cidadeCliente,estadoCliente,cepCliente,enderecoCliente,emailCliente);
+				System.out.print("Digite sua senha");
+			    senha = s.nextLine().trim();
+			    bd.insereDadosCliente(nomeCliente,cpfCliente,rgCliente,telefoneCliente,ruaCliente,cidadeCliente,estadoCliente,cepCliente,enderecoCliente,emailCliente,senha,regiaoCliente);
 			    
 			}
 			System.out.print("Fazer novo pedido: S ou N?");

@@ -13,22 +13,31 @@ public BancoDados() throws SQLException {
 // conexao com o banco de dados do PostgresSQL
 }
 public void login (String email, String senha) throws SQLException {
+while(true){
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM 'CREDENCIAL_CLIENTE' WHERE email="email" = AND senha="senha"");
-            String coluna1, coluna2, coluna3;
+            ResultSet rs = st.executeQuery("SELECT * FROM 'CREDENCIAL_CLIENTE' WHERE email="email"");
+            String coluna1, coluna2;
 while (rs.next()){
-    coluna1 = rs.getString(1);
+    user = rs.getString(1);
     System.out.println(coluna1);
-    coluna2 = rs.getString(2);
+    pass = rs.getString(2);
     System.out.println(coluna2);
-    coluna3 = rs.getString(3);
-    System.out.println(coluna3);
+}
+if(email.equals(user) && senha.equals(pass) ){
+    System.out.print("your login message");
+    break;
+} else{
+    System.out.print("Autenticacao Invalida");
+    System.out.print("Insira sua senha");
+    senha = null
+	senha = s.nextLine().trim();
 }
 }
 
 public void buscaRestaurantes (String CEP) throws SQLException {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM ATLETA");
+            ResultSet rs = st.executeQuery("INSERT INTO CLIENTE VALUES
+    ('UA502', 'Bananas', 105, '1971-07-13', 'Comedy', '82 minutes');");
             String coluna1, coluna2, coluna3,
 while (rs.next()){
     coluna1 = rs.getString(1);
@@ -38,23 +47,21 @@ while (rs.next()){
     coluna3 = rs.getString(3);
     System.out.println(coluna3);
 }
+public void buscaRestaurantes (String nomeCliente, String cpfCliente,String rgCliente, String telefoneCliente, String ruaCliente,String cidadeCliente,String estadoCliente,String cepCliente,String enderecoCliente, String emailCliente,String senha,String regiaoCliente) throws SQLException {
+                    Statement st = con.createStatement();
+    //st.executeQuery("INSERT INTO UF VALUES ('"estadoCliente"');")
+    st.executeQuery("WITH
+    UF AS (insert into UF(UF) values ("estadoCliente") returning id),
+    CIDADE AS (insert into CIDADE(CIDADE,UF_ID) values ("cidadeCliente",UF_ID) returning id),
+    ENDERECO AS (insert into ENDERECO(ENDERECO,CIDADE_ID,CEP,REGIAO) values ("ruaCliente",CIDADE_ID,"cepCliente","regiaoCliente") returning id)
+    CREDENCIAL_CLIENTE AS (insert into CREDENCIAL_CLIENTE (SENHA,EMAIL) values ("senhaCliente","emailCliente") returning EMAIL)
+
+
+    INSERT INTO CLIENTE VALUES
+    ("nomeCliente"', '"cpfCliente"', '"rgCliente"', '"telefoneCliente"', EMAIL);");
+
 }
 
-	public void buscaMedalhistas (int ano, String modalidade) {
-		// Dado o ano de realizacao dos jogos e o nome da modalidade, 
-		//   escreva o codigo que busca
-		//   e imprime na tela os medalhistas (ouro, prata e
-		//   bronze) da modalidade dada como parâmetro disputada
-		//   no ano que também é dado como parâmetro
-	}
-
-	public void cadastraNovaEdicaoJogos (int ano, String estacao, String cidade) {
-		// Insere uma nova informacao no banco de dados, referente
-		//   a uma nova edicao de Jogos Olimpicos. A insercao dessas informacoes
-		//   deve ser realizada na tabela "Jogos" do seu banco de dados.
-		//   Tenha o cuidado de buscar o "id" correto para nao violar a restricao de
-		//   chave primaria da tabela. Sugiro buscar o maior id da tabela e adicionar 1.
-	}
 
 }
 © 2019 GitHub, Inc.
