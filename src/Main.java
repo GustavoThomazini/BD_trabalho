@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main (String[] args) {
-		
+	try{	
                 Scanner s = new Scanner (System.in);
                 String opcao;
                 
@@ -20,9 +20,12 @@ public class Main {
                 String emailCliente = null;
 		String cadastro = null;
 		String senha = null;
-		
+		String regiaoCliente = null;
+		String login = null;
+		String pedido = null;
 
 		BancoDados bd = new BancoDados();
+		
 		
 		mensagem();
 		
@@ -38,7 +41,8 @@ public class Main {
 					emailCliente = s.nextLine().trim();
 					System.out.print("Insira sua senha");
 					senha = s.nextLine().trim();
-					bd.login(login,senha)
+			
+					bd.login(login,senha);
 				}
 			else{
                             System.out.print("Perfil de Acesso Cliente Selecionado ");
@@ -64,26 +68,27 @@ public class Main {
 			    emailCliente = s.nextLine().trim();
 				System.out.print("Digite sua senha");
 			    senha = s.nextLine().trim();
+				
 			    bd.insereDadosCliente(nomeCliente,cpfCliente,rgCliente,telefoneCliente,ruaCliente,cidadeCliente,estadoCliente,cepCliente,enderecoCliente,emailCliente,senha,regiaoCliente);
-			    
+			   
 			}
 			System.out.print("Fazer novo pedido: S ou N?");
 			pedido = s.nextLine().trim();
 			if (pedido.equals("S")) {
 				System.out.print("Digite seu CEP");
 				cepCliente = s.nextLine().trim();
-				bd.buscaRestaurantes(cepCliente);
+				//bd.buscaRestaurantes(cepCliente);
 				System.out.print("Digite o nome do restaurante");
 				String nomeRestaurante = s.nextLine().trim();
-				bd.buscaPratos(nomeRestaurante);
-				String[] prato;
+				//bd.buscaPratos(nomeRestaurante);
+				String prato;
 				while(pedido.equals("S")){
 				System.out.print("Digite o prato que deseja inserir no pedido");
-				prato.add(s.nextLine());
+				//prato.add(s.nextLine());
 				System.out.print("Deseja inserir um novo prato?: S ou N");
 				pedido = s.nextLine().trim();
 				}	
-				bd.inserePedido(prato)	
+				//bd.inserePedido(prato);
 			}
 			}
 			/*	
@@ -113,6 +118,9 @@ public class Main {
 		}*/
 		
 		}
+	} catch (Exception e){
+    			e.printStackTrace();
+    			}
 	}
 	
 	public static void mensagem() {
@@ -122,7 +130,6 @@ public class Main {
 		System.out.println("1: Acesso de Cliente;");
 		System.out.println("2: Acesso de Restaurantes;");
 		System.out.println("3: Acesso de Entregadores;");
-
+	
 	}
-
 }
